@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gitea-apps
+  name: gitea-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitea-apps
+  template:
+    metadata:
+      labels:
+        app: gitea-apps
+    spec:
+      containers:
+        - image: thfx31/ynov:gitea-v1
+          name: gitea
+      imagePullSecrets:
+        - name: dockerhub-secret
+
